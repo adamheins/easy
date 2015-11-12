@@ -2,13 +2,13 @@
 # Allows quick copying of terminal output.
 #
 # Adam Heins <mail@adamheins.com>
-# 2015-11-11
+# 2015-11-12
 
 EASY_LOG_FILE=~/.easy.log
 
 _easy_copy() {
   # Get the line with number $1.
-  local line=$(sed -n "${1}{p;q;}" $EASY_LOG_FILE)
+  local line="$(sed -n "${1}{p;q;}" $EASY_LOG_FILE)"
 
   # Bail if the line number is invalid.
   if [ -z "$line" ]; then
