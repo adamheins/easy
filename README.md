@@ -11,14 +11,23 @@ you want to copy one of those lines. There are generally a few ways to do this:
 Both ways usually take a bit of time. easy helps save that time.
 
 Here's how it works:
-1. Pipe output to `easy`. For example:
-   ```bash
-   ls | easy
-   ```
-   This will print the output of `ls` with line numbers.
-2. Now just run `easy <num>` where `<num>` is the line number of the line you
-   want to copy. Executing the command will copy that line (with the number) to
-   the system clipboard.
+
+Pipe output to `easy`. For example:
+```bash
+ls | easy
+```
+This will print the output of `ls` with line numbers.
+
+Now just run `easy <num>` where `<num>` is the line number of the line you
+want to copy. Executing the command will copy that line (with the number) to
+the system clipboard.
+
+## Installation
+The `easy.sh` script simply needs to be sourced by your shell. One quick way to
+do this is the following:
+```bash
+git clone git@github.com:adamheins/easy ~/.easy && source ~/.easy/easy.sh
+```
 
 ## Compatibility
 Currently only works on OSX.
