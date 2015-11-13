@@ -21,13 +21,19 @@ _easy_copy() {
   fi
 
   # Get a specific word if necessary.
-  if [ -n "$2" ]; then
+  local word_index=$2
+  if [ -n "$word_index" ]; then
     local words=($item)
-    if [ ! "$2" -lt "${#words[@]}" ]; then
-      echo "Word $2 does not exist."
+    if [ "$word_index" -gt "${#words[@]}" ]; then
+      echo "Word $word_index does not exist."
       return 1
     fi
-    item=${words[$2]}
+    ((word_index--))
+    if [ "$word_index" -lt 0 ]; then
+      echo "Word index must be greater than or equal to 1."
+      return 1
+    fi
+    item=${words[$word_index]}
   fi
 
   # Copy the item to the clipboard.
