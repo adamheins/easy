@@ -27,8 +27,10 @@ which word to copy from the line. The list of words are 0-indexed and delimited
 by spaces.
 
 ## Full Example
+Here is a full example for browsing the most recent git commits of a repo and
+then copying one of the commit hashes.
 ```bash
-$ git log | ag commit | head | easy
+$ git log | grep commit | head | easy
      1  commit 131d77589729be3e91a2e3b87061326d0ed26e79
      2  commit 55cb2413a57e2829dc3c5bae36690b8135d5e7b7
      3  commit 704b4c4ef8f395d82eb11672fdf635384ad955dd
@@ -42,6 +44,11 @@ $ git log | ag commit | head | easy
 $ easy 4 1
 Copied '097384295d7799b68e8d455d59e5bff7aef11a2d' to clipboard.
 ```
+
+`git log` displays the commits, `grep commit` displays only lines containing
+the word "commit", `head` displays only the first 10 lines, and `easy` numbers
+the lines and logs them. The next command, `easy 4 1`, copies the second word
+on the fourth line to the clipboard.
 
 ## Installation
 You just need to put `easy` on your `$PATH`. Here is a quick one-liner:
