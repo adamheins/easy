@@ -26,6 +26,23 @@ You can also pass an optional `<word>` argument after `<line>`, which specifies
 which word to copy from the line. The list of words are 0-indexed and delimited
 by spaces.
 
+## Full Example
+```bash
+$ git log | ag commit | head | easy
+     1  commit 131d77589729be3e91a2e3b87061326d0ed26e79
+     2  commit 55cb2413a57e2829dc3c5bae36690b8135d5e7b7
+     3  commit 704b4c4ef8f395d82eb11672fdf635384ad955dd
+     4  commit 097384295d7799b68e8d455d59e5bff7aef11a2d
+     5  commit b354d6a45df3ead7aa87c082ceabcaa9b2d40706
+     6  commit 60adb384cbb1852c409a0d8e32675fdad4887902
+     7  commit e35119abdf17e28ecfabbb21f822cc6d4a34538a
+     8  commit 5fd29afbf428fd9cc069f842258b3bb11114f1ca
+     9  commit 552ef72aa0680d0072b5b8672d0359d939d966ac
+    10  commit 6a0011ecb54d04a597e5ed7406c5bd30d62a94eb
+$ easy 4 1
+Copied '097384295d7799b68e8d455d59e5bff7aef11a2d' to clipboard.
+```
+
 ## Installation
 You just need to put `easy` on your `$PATH`. Here is a quick one-liner:
 ```bash
