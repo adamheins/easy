@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# easy
+# Allows quick copying of terminal output.
+#
+# Adam Heins <mail@adamheins.com>
+# 2015-11-12
+
+EASY_LOG_FILE=~/.easy.log
+HIGHLIGHT=`printf "\x1b[38;5;004m"`
+NORMAL=`printf "\x1b[0m"`
+
+_easy_copy() {
+  # Get the line with number $1.
+  local item="$(sed -n "${1}{p;q;}" $EASY_LOG_FILE)"
+
+  # Bail if the line number is invalid.
+  if [ -z "$item" ]; then
+    echo "Line $1 does not exist."
+    return 1
+  fi
+
+  # Get a specific word if necessary.
+  if [ -n "$2" ]; then
+    local words=($item)
+    if [ ! "$2" -lt "${#words[@]}" ]; then
+      echo "Word $2 does not exist."
+      return 1
+    fi
+    item=${words[$2]}
+  fi
+
+  # Copy the item to the clipboard.
+  printf "$item" | pbcopy
+  echo "Copied '$HIGHLIGHT$item$NORMAL' to clipboard."
+}
+
+if [ -n "$1" ]; then
+  case "$1" in
+    "-h"|"--help") echo "Usage: easy [-h] [line] [word]" ;;
+    *) _easy_copy "$@" ;;
+  esac
+else
+  # Store input in a file, then print it to stdout with line numbers.
+  cat > $EASY_LOG_FILE
+  cat $EASY_LOG_FILE | nl | sed -Ee "s/[[:digit:]]+/$HIGHLIGHT&$NORMAL/"
+  sed -i '' -e '/^$/d' $EASY_LOG_FILE
+fi
