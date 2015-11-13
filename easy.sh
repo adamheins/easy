@@ -5,6 +5,8 @@
 # 2015-11-12
 
 EASY_LOG_FILE=~/.easy.log
+HIGHLIGHT=`echo '\033[38;5;004m'`
+NORMAL=`echo '\033[0m'`
 
 _easy_copy() {
   # Get the line with number $1.
@@ -18,7 +20,7 @@ _easy_copy() {
 
   # Copy the line to the clipboard.
   printf "$line" | pbcopy
-  echo "Copied '$line' to clipboard."
+  echo "Copied '$HIGHLIGHT$line$NORMAL' to clipboard."
 }
 
 easy() {
@@ -30,6 +32,7 @@ easy() {
   else
     # Store input in a file, then print it to stdout with line numbers.
     cat > $EASY_LOG_FILE
-    cat $EASY_LOG_FILE | nl
+    cat $EASY_LOG_FILE | nl | sed -Ee "s/[[:digit:]]+/$HIGHLIGHT&$NORMAL/"
+    sed -i '' -e '/^$/d' $EASY_LOG_FILE
   fi
 }
