@@ -18,15 +18,18 @@ ls | easy
 ```
 This will print the output of `ls` with line numbers.
 
-Now just run `easy <num>` where `<num>` is the line number of the line you
+Now just run `easy <line>` where `<line>` is the line number of the line you
 want to copy. Executing the command will copy that line (with the number) to
 the system clipboard.
 
+You can also pass an optional `<word>` argument after `<line>`, which specifies
+which word to copy from the line. The list of words are 0-indexed and delimited
+by spaces.
+
 ## Installation
-The `easy.sh` script simply needs to be sourced by your shell. One quick way to
-do this is the following:
+You just need to put `easy` on your `$PATH`. Here is a quick one-liner:
 ```bash
-git clone git@github.com:adamheins/easy ~/.easy && source ~/.easy/easy.sh
+git clone git@github.com:adamheins/easy ~/.easy && sudo cp ~/.easy/easy /usr/local/bin
 ```
 
 ## Compatibility
