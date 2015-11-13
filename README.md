@@ -41,13 +41,13 @@ $ git log | grep commit | head | easy
      8  commit 5fd29afbf428fd9cc069f842258b3bb11114f1ca
      9  commit 552ef72aa0680d0072b5b8672d0359d939d966ac
     10  commit 6a0011ecb54d04a597e5ed7406c5bd30d62a94eb
-$ easy 4 0
+$ easy 4 2
 Copied '097384295d7799b68e8d455d59e5bff7aef11a2d' to clipboard.
 ```
 
 `git log` displays the commits, `grep commit` displays only lines containing
 the word "commit", `head` displays only the first 10 lines, and `easy` numbers
-the lines and logs them. The next command, `easy 4 0`, copies the second word
+the lines and logs them. The next command, `easy 4 2`, copies the second word
 on the fourth line to the clipboard.
 
 ## Installation
